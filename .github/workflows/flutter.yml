@@ -34,11 +34,12 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: 1.0.0
-          tag_name: 1.0.0
+          release_name: 1.0.1
+          tag_name: 1.0.1
+          body_path: RELEASE.md
           body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+            1.0.1
+            - AAAA First Change
+            - BBBB Second Change
         env:
           GITHUB_TOKEN: ${{ github.token }}
