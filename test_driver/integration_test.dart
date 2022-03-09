@@ -12,6 +12,6 @@ Future<void> main() async {
       },
     );
   } catch (e) {
-    print('Error occured: $e');
+    //print('Error occured: $e');
   }
 }
