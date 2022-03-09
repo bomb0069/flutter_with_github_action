@@ -34,8 +34,8 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: 1.0.3
-          tag_name: 1.0.3
+          release_name: 1.0.4
+          tag_name: 1.0.4
           body_path: RELEASE.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -49,3 +49,8 @@ jobs:
           asset_path: build/app/outputs/flutter-apk/app-release.apk
           asset_name: app-release.apk
           asset_content_type: application/apk
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+          bodyFile: "RELEASE.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
