@@ -26,9 +26,14 @@ jobs:
       - run: flutter analyze
       - run: flutter test
       - run: flutter build apk
+      - name: ncipollo-release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.ap"
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/flutter-apk/app-release.ap
