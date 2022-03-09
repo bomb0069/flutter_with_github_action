@@ -18,7 +18,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [29]
+        api-level: [29, 31]
         target: [playstore]
 
     steps:
@@ -41,6 +41,12 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           script: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: screenshot
+          path: ${{ matrix.path }}screenshots/          
       - run: flutter build apk
       - name: release
         uses: actions/create-release@v1
