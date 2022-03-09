@@ -36,8 +36,8 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: 1.0.5
-          tag_name: 1.0.5
+          release_name: 1.0.6
+          tag_name: 1.0.6
           body_path: RELEASE.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -51,8 +51,11 @@ jobs:
           asset_path: build/app/outputs/flutter-apk/app-release.apk
           asset_name: app-release.apk
           asset_content_type: application/apk
-      - uses: ncipollo/release-action@v1
+      - name: Run Flutter Driver tests
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-          bodyFile: "RELEASE.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.target }}
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          profile: Nexus 6
+          script: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
