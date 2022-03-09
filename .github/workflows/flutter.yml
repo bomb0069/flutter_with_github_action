@@ -36,6 +36,9 @@ jobs:
           prerelease: false
           release_name: 1.0.0
           tag_name: ${{ github.ref }}
-          body_path: CHANGELOG.md
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
         env:
           GITHUB_TOKEN: ${{ github.token }}
