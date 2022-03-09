@@ -48,24 +48,9 @@ jobs:
           name: screenshot
           path: ${{ matrix.path }}screenshots/          
       - run: flutter build apk
-      - name: release
-        uses: actions/create-release@v1
-        id: create_release
+      - name: Upload apk
+        if: always()
+        uses: actions/upload-artifact@v1
         with:
-          draft: false
-          prerelease: false
-          release_name: 1.0.6
-          tag_name: 1.0.6
-          body_path: RELEASE.md
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: build/app/outputs/flutter-apk/app-release.apk
-          asset_name: app-release.apk
-          asset_content_type: application/apk
+          name: apk
+          path: build/app/outputs/flutter-apk/app-release.apk          
