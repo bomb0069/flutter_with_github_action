@@ -26,3 +26,5 @@ jobs:
       - run: flutter analyze
       - run: flutter test
       - run: flutter build apk
+      - name: Release
+        uses: softprops/action-gh-release@v1
