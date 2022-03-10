@@ -26,9 +26,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: list device
-        uses: reactivecircus/android-emulator-runner@v2
-        run: avdmanager list device
       - run: flutter --version
       - run: flutter clean
       - run: flutter pub get
@@ -41,7 +38,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           profile: Nexus 6
-          script: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
+          script: avdmanager list device && flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v1
