@@ -95,7 +95,8 @@ jobs:
           fetch-depth: 0
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'      - run: flutter build apk
+          channel: 'stable'      
+      - run: flutter build apk
       - name: Upload apk
         if: always()
         uses: actions/upload-artifact@v1
