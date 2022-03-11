@@ -13,7 +13,7 @@ void main() {
       await binding.convertFlutterSurfaceToImage();
       await tester.pumpAndSettle();
 
-      await binding.takeScreenshot('test-screenshot');
+      await binding.takeScreenshot('before-screenshot');
 
       // Verify the counter starts at 0.
       expect(find.text('0'), findsOneWidget);
@@ -26,6 +26,8 @@ void main() {
 
       // Trigger a frame.
       await tester.pumpAndSettle();
+
+      await binding.takeScreenshot('after-screenshot');
 
       // Verify the counter increments by 1.
       expect(find.text('1'), findsOneWidget);
