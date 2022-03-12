@@ -8,29 +8,8 @@ name: Flutter
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  test:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [29]
-        target: [playstore]
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-      - run: flutter --version
-      - run: flutter clean
-      - run: flutter pub get
-      - run: flutter analyze
-      - run: flutter test
 
   integration_test:
     runs-on: macos-latest
@@ -81,25 +60,3 @@ jobs:
         with:
           name: screenshot
           path: ${{ matrix.path }}screenshots/          
-
-  build_apk:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [29]
-        target: [playstore]
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'      
-      - run: flutter build apk
-      - name: Upload apk
-        if: always()
-        uses: actions/upload-artifact@v1
-        with:
-          name: apk
-          path: build/app/outputs/flutter-apk/app-release.apk          
