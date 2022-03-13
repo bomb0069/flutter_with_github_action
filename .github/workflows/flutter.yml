@@ -59,7 +59,7 @@ jobs:
           script: |
             adb shell screenrecord /sdcard/example.mp4 &
             sleep 5
-            flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
+            flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart  || true
             adb shell pkill -INT screenrecord
             sleep 5
             adb pull /sdcard/example.mp4
