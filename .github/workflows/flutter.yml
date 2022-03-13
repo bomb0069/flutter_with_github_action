@@ -66,6 +66,11 @@ jobs:
           disable-animations: false
           sdcard-path-or-size: 1000M
           script: |
+            ls -lt
+            uname
+            uname -r
+            pwd
+            adb devices -l
             sh ./script.sh
       - name: Upload screenrecord
         if: always()
