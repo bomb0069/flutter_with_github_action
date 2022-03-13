@@ -28,7 +28,7 @@ jobs:
       - name: Cache Flutter dependencies
         uses: actions/cache@v1
         with:
-          path: /opt/hostedtoolcache/flutter
+          path: /Users/runner/hostedtoolcache/flutter
           key: ${{ runner.os }}-flutter
 
       - name: AVD cache
