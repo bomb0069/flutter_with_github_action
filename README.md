@@ -17,6 +17,8 @@ A new Flutter project.
 ## Screen Record on MAC
 
 - (How to Record Flutter Integration Tests With GitHub Actions)[https://betterprogramming.pub/how-to-record-flutter-integration-tests-with-github-actions-1ca670eff94a]
+- (How to record Android device's screen on Android version below 4.4 (KitKat))[https://stackoverflow.com/questions/28217333/how-to-record-android-devices-screen-on-android-version-below-4-4-kitkat#:~:text=To%20start%20recording%20your%20device's,mp4%20file%20on%20your%20device.]
+- (No SDCard or writable storage apparently available on running AVD. Unable to write even from adb. )[https://githubmemory.com/repo/ReactiveCircus/android-emulator-runner/issues/102] 
 
 ## Speed Up
 
