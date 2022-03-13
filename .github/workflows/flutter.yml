@@ -57,13 +57,7 @@ jobs:
           disable-animations: false
           sdcard-path-or-size: 1000M
           script: |
-            adb shell screenrecord /sdcard/example.mp4 &
-            sleep 5
-            flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart  || true
-            adb shell pkill -INT screenrecord
-            sleep 5
-            adb pull /sdcard/example.mp4
-
+            sh ./script.sh
       - name: Upload screenrecord
         if: always()
         uses: actions/upload-artifact@v1
