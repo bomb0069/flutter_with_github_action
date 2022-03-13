@@ -69,8 +69,8 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: screenrecord
-          path: capture.mp4          
-      - name: Upload screenshit
+          path: example.mp4          
+      - name: Upload screenshot
         if: always()
         uses: actions/upload-artifact@v1
         with:
