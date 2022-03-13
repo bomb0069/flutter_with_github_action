@@ -30,16 +30,9 @@ jobs:
         with:
           path: /Users/runner/hostedtoolcache/flutter
           key: ${{ runner.os }}-flutter
-          
+      
       - name: Gradle cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+        uses: gradle/gradle-build-action@v2
 
       - name: AVD cache
         uses: actions/cache@v2
