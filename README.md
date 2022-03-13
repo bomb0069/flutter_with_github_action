@@ -12,3 +12,13 @@ A new Flutter project.
 ## Problem Solving
 
 - [WARN: Unable to load JNA library (OS: Mac OS X 12.2) warning when running flutter app on release mode. (M1 Mac)](https://stackoverflow.com/questions/71059082/warn-unable-to-load-jna-library-os-mac-os-x-12-2-warning-when-running-flutte)
+- [Flutter Widget and Integration Tests — some Surprises about Timeouts and Durations](https://aschilken.medium.com/flutter-widget-and-integration-tests-some-surprises-about-timeouts-and-durations-3c1aae94b608)
+
+## Screen Record on MAC
+
+- (How to Record Flutter Integration Tests With GitHub Actions)[https://betterprogramming.pub/how-to-record-flutter-integration-tests-with-github-actions-1ca670eff94a]
+
+## Speed Up
+
+- (4 ways to speed up your Github Action workflows)[https://jcdan3.medium.com/4-ways-to-speed-up-your-github-action-workflows-a0b08067a6c6]
+- (Github Actions for Flutter with Caching)[https://sollematthew.medium.com/github-actions-for-flutter-with-caching-reusable-template-4536c1b67f6a]

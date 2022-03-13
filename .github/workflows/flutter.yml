@@ -52,7 +52,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           profile: Nexus 6
-          script: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
+          script: adb shell screenrecord /sdcard/example.mp4 || flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
 
       - name: Upload screenshots
         if: always()
