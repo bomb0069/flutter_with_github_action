@@ -59,7 +59,7 @@ jobs:
           target: ${{ matrix.target }}
           api-level: ${{ matrix.api-level }}
           arch: x86_64
-          profile: 13.5in Freeform
+          profile: Nexus 7
           cores: 4
           ram-size: 2048M
           disk-size: 4096M
