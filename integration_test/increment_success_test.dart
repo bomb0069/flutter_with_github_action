@@ -30,7 +30,7 @@ void main() {
       await binding.takeScreenshot('after-screenshot');
 
       // Verify the counter increments by 1.
-      expect(find.text('1'), findsOneWidget);
+      expect(find.text('5'), findsOneWidget);
     });
   });
 }

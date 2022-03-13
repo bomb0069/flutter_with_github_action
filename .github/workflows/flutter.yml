@@ -44,7 +44,7 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      - name: Start Record
+      - name: Run Flutter Driver tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           target: ${{ matrix.target }}
@@ -59,38 +59,7 @@ jobs:
           script: |
             adb shell screenrecord /sdcard/example.mp4 &
             sleep 5
-
-      - name: Run Flutter Driver tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          target: ${{ matrix.target }}
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          profile: 13.5in Freeform
-          cores: 4
-          ram-size: 2048M
-          disk-size: 4096M
-          disable-animations: false
-          sdcard-path-or-size: 1000M
-          script: |
             flutter drive --driver=test_driver/integration_test.dart --target=integration_test/increment_success_test.dart
-            adb shell pkill -INT screenrecord
-            sleep 5
-            adb pull /sdcard/example.mp4
-
-      - name: Stop Record
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          target: ${{ matrix.target }}
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          profile: 13.5in Freeform
-          cores: 4
-          ram-size: 2048M
-          disk-size: 4096M
-          disable-animations: false
-          sdcard-path-or-size: 1000M
-          script: |
             adb shell pkill -INT screenrecord
             sleep 5
             adb pull /sdcard/example.mp4
