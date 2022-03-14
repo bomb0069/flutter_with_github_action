@@ -31,14 +31,12 @@ jobs:
 
       - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
         with:
-          cmd: |
-            flutter pub get
-            flutter analyze 
-            flutter test
-            flutter test integration_test
           api: 31
           tag: default
           abi: x86_64
           hardwareProfile: 13.5in Freeform
           cmdOptions: -no-snapshot-save
           bootTimeout: 1200
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
