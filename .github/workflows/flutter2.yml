@@ -31,6 +31,7 @@ jobs:
 
       - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
         with:
+          cmd: flutter --version
           api: 31
           tag: default
           abi: x86_64
@@ -39,4 +40,5 @@ jobs:
           bootTimeout: 1200
       - run: flutter pub get
       - run: flutter analyze
+
       - run: flutter test
