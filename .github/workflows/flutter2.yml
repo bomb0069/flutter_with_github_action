@@ -31,7 +31,10 @@ jobs:
 
       - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
         with:
-          cmd: flutter test integration_test
+          cmd: |
+            flutter analyze 
+            flutter test
+            flutter test integration_test
           api: 31
           tag: default
           abi: x86_64
