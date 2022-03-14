@@ -35,3 +35,6 @@ jobs:
           api: 31
           tag: default
           abi: x86_64
+          hardwareProfile: 13.5in Freeform
+          cmdOptions: -no-snapshot-save
+          bootTimeout: 1200
