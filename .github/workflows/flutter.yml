@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-11
     strategy:
       matrix:
-        api-level: [28, 29, 30]
+        api-level: [30]
         target: [playstore]
 
     steps:
@@ -57,7 +57,6 @@ jobs:
           disk-size: 4096M
           force-avd-creation: false
           emulator-options: -gpu swiftshader_indirect -camera-back none
-          emulator-build: 6110076
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
@@ -72,7 +71,6 @@ jobs:
           ram-size: 2048M
           disk-size: 4096M
           emulator-options: -gpu swiftshader_indirect -camera-back none
-          emulator-build: 6110076
           disable-animations: false
           sdcard-path-or-size: 1000M
           script: |
