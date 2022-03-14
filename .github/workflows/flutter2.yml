@@ -31,7 +31,7 @@ jobs:
 
       - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
         with:
-          cmd: flutter --version
+          cmd: sh ./script.sh
           api: 31
           tag: default
           abi: x86_64
