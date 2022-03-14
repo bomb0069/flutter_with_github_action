@@ -1,0 +1,27 @@
+
+name: Flutter
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  integration_test:
+    runs-on: macos-11
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      # Download & install the Android SDK.
+      - uses: malinskiy/action-android/install-sdk@release/0.1.2
+
+      # Set up platform tools like adb.
+      - run: sdkmanager platform-tools
+
+      # Start ADB (and verify that pathing is working correctly).
+      - run: adb devices

@@ -3,89 +3,89 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Flutter
+# name: Flutter
 
-on:
-  push:
-    branches: [ main ]
+# on:
+#   push:
+#     branches: [ main ]
 
-jobs:
+# jobs:
 
-  integration_test:
-    runs-on: macos-11
-    strategy:
-      matrix:
-        api-level: [30]
-        target: [playstore]
+#   integration_test:
+#     runs-on: macos-11
+#     strategy:
+#       matrix:
+#         api-level: [30]
+#         target: [playstore]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'stable'
 
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v1
-        with:
-          path: /Users/runner/hostedtoolcache/flutter
-          key: ${{ runner.os }}-flutter
+#       - name: Cache Flutter dependencies
+#         uses: actions/cache@v1
+#         with:
+#           path: /Users/runner/hostedtoolcache/flutter
+#           key: ${{ runner.os }}-flutter
       
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
+#       - name: Gradle cache
+#         uses: gradle/gradle-build-action@v2
 
-      - name: AVD cache
-        uses: actions/cache@v2
-        id: avd-cache
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-${{ matrix.api-level }}
+#       - name: AVD cache
+#         uses: actions/cache@v2
+#         id: avd-cache
+#         with:
+#           path: |
+#             ~/.android/avd/*
+#             ~/.android/adb*
+#           key: avd-${{ matrix.api-level }}
 
-      - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          target: ${{ matrix.target }}
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          profile: Nexus 7
-          cores: 4
-          ram-size: 2048M
-          disk-size: 4096M
-          force-avd-creation: false
-          emulator-options: -gpu swiftshader_indirect -camera-back none
-          emulator-build: 7425822
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
+#       - name: create AVD and generate snapshot for caching
+#         if: steps.avd-cache.outputs.cache-hit != 'true'
+#         uses: reactivecircus/android-emulator-runner@v2
+#         with:
+#           target: ${{ matrix.target }}
+#           api-level: ${{ matrix.api-level }}
+#           arch: x86_64
+#           profile: Nexus 7
+#           cores: 4
+#           ram-size: 2048M
+#           disk-size: 4096M
+#           force-avd-creation: false
+#           emulator-options: -gpu swiftshader_indirect -camera-back none
+#           emulator-build: 7425822
+#           disable-animations: false
+#           script: echo "Generated AVD snapshot for caching."
 
-      - name: Run Flutter Driver tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          target: ${{ matrix.target }}
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          profile: Nexus 7
-          cores: 4
-          ram-size: 2048M
-          disk-size: 4096M
-          emulator-options: -gpu swiftshader_indirect -camera-back none
-          emulator-build: 7425822
-          disable-animations: false
-          sdcard-path-or-size: 1000M
-          script: |
-            sdkmanager --update
-            ls -lt
-            uname
-            uname -r
-            pwd
-            adb devices -l
-            sh ./script.sh
-      - name: Upload screenrecord
-        if: always()
-        uses: actions/upload-artifact@v1
-        with:
-          name: screenrecord
-          path: screenrecord/
+#       - name: Run Flutter Driver tests
+#         uses: reactivecircus/android-emulator-runner@v2
+#         with:
+#           target: ${{ matrix.target }}
+#           api-level: ${{ matrix.api-level }}
+#           arch: x86_64
+#           profile: Nexus 7
+#           cores: 4
+#           ram-size: 2048M
+#           disk-size: 4096M
+#           emulator-options: -gpu swiftshader_indirect -camera-back none
+#           emulator-build: 7425822
+#           disable-animations: false
+#           sdcard-path-or-size: 1000M
+#           script: |
+#             sdkmanager --update
+#             ls -lt
+#             uname
+#             uname -r
+#             pwd
+#             adb devices -l
+#             sh ./script.sh
+#       - name: Upload screenrecord
+#         if: always()
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: screenrecord
+#           path: screenrecord/
